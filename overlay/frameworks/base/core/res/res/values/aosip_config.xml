@@ -18,6 +18,10 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+  <!-- sRGB sysfs path -->
+  <string name="config_srgb_path">/sys/class/graphics/fb0/SRGB</string>
+
   <!-- Extended Boosts for QPerformance -->
 
   <!-- Whether cpu boost is enabled right after boot -->
