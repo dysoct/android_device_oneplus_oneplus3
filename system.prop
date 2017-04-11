@@ -32,6 +32,9 @@ ro.cutoff_voltage_mv=3250
 bt.max.hfpclient.connections=1
 qcom.bluetooth.soc=rome
 
+# Camera
+persist.camera.hal.debug=0
+
 # Display power reduction (FOSS)
 ro.qcom.dpps.sensortype=3
 ro.qualcomm.display.paneltype=1
