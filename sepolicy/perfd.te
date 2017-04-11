@@ -1,1 +1,2 @@
 allow perfd mediacodec:process signull;
+allow perfd device:file rw_file_perms;
