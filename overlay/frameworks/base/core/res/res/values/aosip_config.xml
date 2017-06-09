@@ -19,12 +19,12 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-  <!-- sRGB sysfs path -->
-  <string name="config_srgb_path">/sys/class/graphics/fb0/SRGB</string>
+   <!-- sRGB sysfs path -->
+   <string name="config_srgb_path">/sys/class/graphics/fb0/SRGB</string>
 
-  <!-- Extended Boosts for QPerformance -->
+   <!-- Extended Boosts for QPerformance -->
 
-  <!-- Boost parameters which get passed to QPerformance -->
+   <!-- Boost parameters which get passed to QPerformance -->
    <integer-array name="onbootboost_param_value">
        <item>0x40C00000</item> <!-- SCHEDBOOST resource opcode-->
        <item>0x1</item>        <!-- SCHEDBOOST resource value-->
@@ -33,10 +33,13 @@
        <item>0x40804100</item> <!-- CPUBOOST_MAX_FREQ LITTLE Core resource opcode-->
        <item>0xFFF</item>      <!-- CPUBOOST MAX_FREQ resource value-->
        <item>0x40800100</item> <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode -->
-       <item>0x6A4</item>      <!-- CPUBOOST MIN_FREQ resource value -->
+       <item>0x4B0</item>      <!-- CPUBOOST MIN_FREQ resource value -->
        <item>0x40800000</item> <!-- CPUBOOST_MIN_FREQ BIG CORE resource opcode -->
-       <item>0x7D0</item>      <!-- CPUBOOST MIN_FREQ resource value -->
+       <item>0x708</item>      <!-- CPUBOOST MIN_FREQ resource value -->
    </integer-array>
+
+   <!-- Duration of the boost in seconds -->
+   <integer name="onbootboost_duration">15</integer>
 
    <!-- Boost parameters which get passed to QPerformance -->
    <integer-array name="qboost_weak_param_value">
