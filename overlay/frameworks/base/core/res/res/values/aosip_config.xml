@@ -63,7 +63,4 @@
         <item>0x1</item>        <!-- PWR_CLPS DIS resource value-->
    </integer-array>
 
-    <!-- Whether FP unlock Boost is enabled -->
-   <integer name="fpunlockboost_duration">800</integer>
-
 </resources>
