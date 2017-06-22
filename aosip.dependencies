@@ -4,19 +4,22 @@
    "target_path": "device/oppo/common"
  },
  {
-   "repository" : "kernel_oneplus_msm8996",
-   "target_path": "kernel/oneplus/msm8996"
+   "repository" : "akhilnarang/kernel_oneplus_msm8996",
+   "target_path": "kernel/oneplus/msm8996",
+   "branch": "nougat"
  },
  {
-   "repository" : "hardware_cyanogen",
-   "target_path": "hardware/cyanogen"
+   "repository" : "LineageOS/android_hardware_cyanogen",
+   "target_path": "hardware/cyanogen",
+   "branch"     : "cm-14.1"
  },
  {
-   "repository" : "packages_resources_devicesettings",
-   "target_path": "packages/resources/devicesettings"
+   "repository" : "LineageOS/android_packages_resources_devicesettings",
+   "target_path": "packages/resources/devicesettings",
+   "branch"     : "cm-14.1"
  },
  {
-   "repository" : "platform_vendor_oneplus",
-   "target_path": "vendor/oneplus"
+   "repository" : "vendor_oneplus_oneplus3",
+   "target_path": "vendor/oneplus/oneplus3"
  }
 ]
