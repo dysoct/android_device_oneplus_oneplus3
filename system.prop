@@ -32,9 +32,6 @@ ro.cutoff_voltage_mv=3250
 bt.max.hfpclient.connections=1
 qcom.bluetooth.soc=rome
 
-# Camera
-camera.hal1.packagelist=com.oneplus.camera
-
 # Display power reduction (FOSS)
 ro.qcom.dpps.sensortype=3
 ro.qualcomm.display.paneltype=1
