@@ -1,0 +1,62 @@
+From 33034a48eba5e5814b28b62e9e62f79073c50901 Mon Sep 17 00:00:00 2001
+From: Kevin Mckee <kxzxxx@gmail.com>
+Date: Fri, 11 Aug 2017 15:58:22 +0100
+Subject: [PATCH 2/4] [PATCH] mod for camera1 jni
+
+---
+ core/jni/android_hardware_Camera.cpp | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/core/jni/android_hardware_Camera.cpp b/core/jni/android_hardware_Camera.cpp
+index ae3260b..99eac62 100644
+--- a/core/jni/android_hardware_Camera.cpp
++++ b/core/jni/android_hardware_Camera.cpp
+@@ -43,6 +43,7 @@ enum {
+ 
+ struct fields_t {
+     jfieldID    context;
++    jfieldID    metadata_ptr;
+     jfieldID    facing;
+     jfieldID    orientation;
+     jfieldID    canDisableShutterSound;
+@@ -78,6 +79,7 @@ struct fields_t {
+ 
+ static fields_t fields;
+ static Mutex sLock;
++static CameraMetadata* mMeta_ptr;
+ 
+ // provides persistent context for calls from native code to Java
+ class JNICameraContext: public CameraListener
+@@ -294,7 +296,12 @@ void JNICameraContext::copyAndPost(JNIEnv* env, const sp<IMemory>& dataPtr, int
+                         return;
+                     }
+                 }
+-            } else {
++            } else if(msgType == 0x10000) {
++                camera_metadata_t * cMetaData = reinterpret_cast<camera_metadata_t*>(heapBase + offset);
++                *mMeta_ptr=(const camera_metadata_t*)cMetaData;
++                mMeta_ptr->sort();
++            }
++            else {
+                 ALOGV("Allocating callback buffer");
+                 obj = env->NewByteArray(size);
+             }
+@@ -927,6 +934,7 @@ static void android_hardware_Camera_takePicture(JNIEnv *env, jobject thiz, jint
+     JNICameraContext* context;
+     sp<Camera> camera = get_native_camera(env, thiz, &context);
+     if (camera == 0) return;
++    mMeta_ptr=reinterpret_cast<android::CameraMetadata*>(env->GetLongField(thiz,fields.metadata_ptr));
+ 
+     /*
+      * When CAMERA_MSG_RAW_IMAGE is requested, if the raw image callback
+@@ -1255,6 +1263,7 @@ int register_android_hardware_Camera(JNIEnv *env)
+ {
+     field fields_to_find[] = {
+         { "android/hardware/Camera", "mNativeContext",   "J", &fields.context },
++        { "android/hardware/Camera", "mMetadataPtr",   "J", &fields.metadata_ptr },
+         { "android/hardware/Camera$CameraInfo", "facing",   "I", &fields.facing },
+         { "android/hardware/Camera$CameraInfo", "orientation",   "I", &fields.orientation },
+         { "android/hardware/Camera$CameraInfo", "canDisableShutterSound",   "Z",
+-- 
+2.7.4
+

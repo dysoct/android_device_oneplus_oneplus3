@@ -1,0 +1,5 @@
+This is patch directory
+
+cd WORKING_DIR
+sh device/oneplus/oneplus3/patches/install.sh
+sh device/oneplus/oneplus3/patches/uninstall.sh
